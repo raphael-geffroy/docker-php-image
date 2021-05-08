@@ -1,5 +1,4 @@
 FROM debian:stable AS php
-COPY qemu-arm-static /usr/bin
 
 RUN apt update \
 	&& apt install -yq wget git unzip \
