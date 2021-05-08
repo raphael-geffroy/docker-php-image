@@ -6,13 +6,14 @@ RUN apt update \
 
 #enable php repository
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
-	&& echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
+	&& echo "deb https://packages.sury.org/php/ buster main" | tee /etc/apt/sources.list.d/php.list \
 	&& apt update
 
 #Install php
 RUN apt install -yq php8.0 \
 	php8.0-common \
-	php8.0-curl php8.0-gd php8.0-intl php-json php8.0-mbstring php8.0-xml php8.0-zip php8.0-pgsql php8.0-fpm
+	php8.0-curl php8.0-gd php8.0-intl php-json php8.0-mbstring php8.0-xml php8.0-zip php8.0-fpm \
+	php8.0-pgsql
 
 #Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
